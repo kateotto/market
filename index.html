@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+        <head>
+                <title> Love Market </title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+               <link rel="stylesheet" href="style.css">
+               <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+               <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+               <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+               <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+               
+               
+              
+        </head>
+        <body>
+            <nav>
+                <h1>Love Market</h1>
+               
+                <p id="myBtn"><i class="fas fa-shopping-cart"></i></p>
+                
+                <div id="count"><span id="count-place">0</span></div>
+
+            </nav>
+            
+          
+          
+            <section>            
+            <!-- The Modal -->
+                <div id="popModal" class="modal">
+
+  <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>In your cart:</p>
+                        <p id="empty">Empty</p>
+                        <div id="first"></div>
+                        <div id="second"></div>
+                        <div id="thrid"></div>
+                        <div id="due"></div>
+                    </div>
+
+                </div>
+
+            
+                <div class="offert">
+                    <div class="main-avatar-first">
+                    <img src="img1.png"/>
+                    </div>
+                    <p>Aliquam et purus vitae ante cursus molestie sed id ex.
+                    Fusce lacinia ullamcorper arcu, sit amet malesuada mauris mattis sit amet. Donec tortor diam, commodo non fringilla at, commodo non libero.
+                    Curabitur vel luctus lacus, ut mattis dui. Phasellus fringilla consequat lacus, et ultrices odio.</p>
+                    <button id="prod1" class="add-btn">Add to cart</button>
+                    <div id="price">$10</div>
+                </div>
+               
+                <div class="offert">
+                        <div class="main-avatar-second">
+                        <img src="img2.png"/>
+                        </div>
+                        <p>Praesent elementum feugiat nibh, vitae rhoncus justo facilisis eget.
+                        Donec efficitur ipsum eu dui tincidunt egestas. Mauris fringilla malesuada nunc vitae maximus.
+                        Morbi sed rutrum mi. Pellentesque convallis dapibus eleifend.
+                        </p>
+                         <button id="prod2" class="add-btn">Add to cart</button>
+                          <div id="price">$15</div>
+                </div>
+                <div class="offert">
+                        <div class="main-avatar-thrid">
+                        <img src="img3.png"/>
+                        </div>
+                        <p> Maecenas mollis lorem ac commodo laoreet.
+                        Maecenas vel maximus sem. Fusce ante justo, pellentesque non pulvinar eget, gravida id est.
+                        Curabitur in nisl neque.
+                         Cras eu mi nisl. Donec sed consectetur nisi.</p>
+                        <button id="prod3" class="add-btn">Add to cart</button>
+                         <div id="price">$20</div>
+                </div>
+            </section>
+        
+        <script>
+        
+        //COUNT
+         var counter = 1;
+var add = (function () {
+   
+    return function () {return counter++;}
+})();
+
+function myFunction(){
+    document.getElementById("count-place").innerHTML = add();
+    document.getElementById("empty").innerHTML =" ";
+}
+
+
+
+
+
+
+
+//MODAL
+
+
+var modal = document.getElementById('popModal');
+
+var btn = document.getElementById('myBtn');
+
+var span = document.getElementsByClassName('close')[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if(event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+// CART INSIDE 
+var p1 = document.getElementById("prod1");
+var p2 = document.getElementById("prod2");
+var p3 = document.getElementById("prod3");
+
+
+  
+    var product_1 = 0;
+    var product_2 = 0;
+    var product_3 = 0;
+    
+    var price_1 = 10;
+    var price_2 = 15;
+    var price_3 = 20;
+    
+
+p1.onclick = function() {
+    myFunction();
+    product_1 = product_1 + 1;   
+  
+    document.getElementById('first').innerHTML ="Product nr 1. Amount: " + product_1 + " Price: " + (product_1 * price_1);
+    
+    due();
+    
+
+}
+
+p2.onclick = function() {
+    myFunction();
+    product_2 = product_2 + 1;
+  
+    document.getElementById('second').innerHTML ="Product nr 2. Amount: " + product_2 + " Price: " + (product_2 * price_2);
+    
+    due();
+
+}
+
+
+p3.onclick = function() {
+    myFunction();
+    product_3 = product_3 + 1;
+  
+    document.getElementById('thrid').innerHTML ="Product nr 3. Amount: " + product_3 + " Price: " + (product_3 * price_3);
+    
+    due();
+
+}
+
+
+var due = function() {
+    var paymentDue = (product_1*price_1) + (product_2*price_2) + (product_3*price_3);
+    document.getElementById('due').innerHTML = "Payment due: " + paymentDue;
+}
+
+</script>
+
+        
+        
+</body>
+</html>
